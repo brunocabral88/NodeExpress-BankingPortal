@@ -1,14 +1,14 @@
 const fs = require('fs');
-const express = require('express');
 const path = require('path');
-const app = express();
-const PORT = 3000;
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
+const express = require('express');
+const app = new express();
 
-app.get('/', (req,res) => res.render('index',{ title: 'Index' }));
+app.set('views',path.join(__dirname, '/views'));
+app.set('view engine','ejs');
 
-app.listen(3000, () => console.log('PS Project Running on port 3000!')); 
+app.use(express.static(path.join(__dirname, '/public')));
 
+app.get('/', (req, res) => res.render('index', { title: 'Index' }));
+
+app.listen(3000, () => { console.log('PS Project Running on port 3000!') });
