@@ -1,0 +1,16 @@
+const fs = require('fs');
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = 3000;
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.route('/').get((req,res) => res.render('index', { title: 'Index' }));
+
+app.listen(PORT, (socket) => {
+    console.log(`PS Project Running on port ${PORT}!`);
+}); 
+
